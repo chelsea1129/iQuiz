@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBAction func settingPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Setting Alert", message: "Settings go here", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in }))
+        self.present(alert, animated:true, completion: nil)
+    }
+    
     @IBOutlet weak var subjectTableView: UITableView!
     
     let subjectList = ["Mathematics", "Marvel Super Heroes", "Science"]
@@ -20,6 +26,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         subjectTableView.delegate = self
         subjectTableView.dataSource = self
+        
+        subjectTableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
