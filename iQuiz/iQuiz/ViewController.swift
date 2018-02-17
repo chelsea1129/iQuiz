@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let subjectList = ["Mathematics", "Marvel Super Heroes", "Science"]
     let subjectDescription = ["Test your math skills", "All about Marvel", "Test your science skills"]
+    var myIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +42,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.catDetails.text = subjectDescription[indexPath.row]
         cell.catIcon.image = UIImage(named: "category")
         
-        
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "CategoryToQuestion", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let target = segue.destination as! QuestionViewController
+        
+        target.cellPressed = myIndex
+    }
 
-
+    
 
 }
 
