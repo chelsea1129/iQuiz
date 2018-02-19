@@ -7,6 +7,25 @@
 //
 
 import UIKit
+import Foundation
+
+struct QuizInfo: Decodable {
+    let title: String
+    let desc: String?
+    let questions: [Question]
+}
+
+struct Question: Decodable {
+    let text: String
+    let answer: String
+    let answers: [String]
+}
+
+struct QuizJson: Decodable{
+    let data: [Question]?
+}
+
+
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -23,12 +42,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var myIndex = 0
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         subjectTableView.delegate = self
         subjectTableView.dataSource = self
         
         subjectTableView.tableFooterView = UIView()
+        
+        let jsonUrlString = "http://tednewardsandbox.site44.com/questions.json"
+        guard let url = URL(string: jsonUrlString) else {
+            return
+        }
+        print(url)
+        
+        URLSession.shared.dataTask(with:url) {(data, response, error) in
+            guard let data = data else {return}
+            do{
+                let quizInfo = try JSONDecoder().decode([QuizInfo].self, from: data)
+                
+            } catch let jsonError{
+                print(jsonError)
+            }
+        }.resume()
+        
+        super.viewDidLoad()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

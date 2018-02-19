@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class QuestionViewController: UIViewController {
     let mathQuestion = ["What's the answer for 1 + 1?", "What's the answer for 2 + 2?", "What's the answer for 2 * 3?"]
     let mathAnswer = [["2", "4", "1", "5"], ["4", "3", "2","5"], ["6", "5", "8", "7"]]
@@ -16,11 +18,7 @@ class QuestionViewController: UIViewController {
     let scienceQuestion = ["What do bees make honey from?", "If I dissolve some sugar in regular water, what have I made?", "How fast do bees wings beat? (times per second)"]
     let scienceAnswer = [["Nectar", "Syrup", "Honeynut Cheerios", "Honeynut"], ["Solution", "Sweet tea", "Mixture", "Water"], ["180", "5", "50", "80"]]
     
-    var question: [String] = [] {
-        didSet{
-            print("og Questions: \(question)")
-        }
-    }
+    var question: [String] = []
     var answer: [[String]] = [[]]
     var cellPressed = -1
     var currentQuestion = 0
@@ -31,9 +29,6 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var questionLbl: UILabel!
     @IBAction func answerBtn(_ sender: UIButton) {
         answerChosen = sender.tag
-//        if (currentQuestion != question.count){
-//            newQuestion()
-//        }
     }
     @IBAction func submitBtn(_ sender: UIButton) {
         performSegue(withIdentifier: "QuestionToAnswer", sender: self)
@@ -68,7 +63,6 @@ class QuestionViewController: UIViewController {
                 x += 1
             }
         }
-//        currentQuestion += 1
     }
     
     override func viewDidLoad() {
