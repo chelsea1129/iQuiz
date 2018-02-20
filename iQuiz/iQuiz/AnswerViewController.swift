@@ -11,19 +11,14 @@ import UIKit
 class AnswerViewController: UIViewController {
 
     var currentAnswer : Int = -1
-    var correctAnswer : UInt32 = 0
-    var questions: [String] = [] {
-        didSet {
-            print("questions passed to answer \(questions)" )
-        }
-    }
+    var correctAnswer : Int = -1
+    var questions: [String] = []
     var answers : [[String]] = [[]]
-    var currentQuestion : Int = -1 {
-        didSet{
-            print(currentQuestion)
-        }
-    }
+    var currentQuestion : Int = -1
     var totalRight : Int = 0
+    var questionObjects : [Question]?
+    var cellPressed: Int?
+    var quizInfo: [QuizInfo]?
     
     @IBOutlet weak var questionLbl: UILabel!
     @IBOutlet weak var correctAnsLbl: UILabel!
@@ -41,31 +36,33 @@ class AnswerViewController: UIViewController {
     
     func display(){
         questionLbl.text = questions[currentQuestion]
-        correctAnsLbl.text = "The correct answer is: \(answers[currentQuestion][0])"
+        correctAnsLbl.text = "The correct answer is: \(answers[currentQuestion][correctAnswer-1])"
         if currentAnswer == Int(correctAnswer){
             statusLbl.text = "You got it right!"
             totalRight += 1
         } else {
             statusLbl.text = "You got it wrong."
         }
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         display()
+        display()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "MoreQuestion"){
             let target = segue.destination as! QuestionViewController
             currentQuestion += 1
-            target.answer = answers
-            target.question = questions
+            target.answers = answers
+            target.questions = questions
             target.totalRight = totalRight
             target.currentQuestion = currentQuestion
+            target.questionObjects = questionObjects!
+            target.cellPressed = cellPressed!
+            target.quizInfo = quizInfo!
             
+
         }else if(segue.identifier == "Finished"){
            let target = segue.destination as! FinishedViewController
             target.totalQuestion = questions.count

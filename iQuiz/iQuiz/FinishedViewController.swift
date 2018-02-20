@@ -25,14 +25,14 @@ class FinishedViewController: UIViewController {
             var msg: String = ""
             
             if(score < 0.5){
-                msg = "You are a failure"
+                msg = "Sorry, you failed"
             }else if( score > 0.6 && score < 1){
                 msg = "Good job!"
             }else if( score == 1){
-                msg = "You got 100%!"
+                msg = "Nice job! You got 100%!"
             }
             
-            lblScore.text = "\(totalRight) / \(totalQuestion)"
+            lblScore.text = "Your score is: \(totalRight) / \(totalQuestion)"
             lblMessage.text = msg
             
         }

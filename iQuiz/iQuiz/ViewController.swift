@@ -36,9 +36,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBOutlet weak var subjectTableView: UITableView!
-    
-    let subjectList = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let subjectDescription = ["Test your math skills", "All about Marvel", "Test your science skills"]
+    var subjectList: [String] = []
+    var subjectDescription: [String] = []
+//    var questions: [Question] = []
+//    var answers: [[String]] = [[]]
+//    var correctIndex: Int = -1
+    var quizInfo: [QuizInfo]?
     var myIndex = 0
     
     override func viewDidLoad() {
@@ -52,21 +55,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let url = URL(string: jsonUrlString) else {
             return
         }
-        print(url)
         
         URLSession.shared.dataTask(with:url) {(data, response, error) in
             guard let data = data else {return}
             do{
-                let quizInfo = try JSONDecoder().decode([QuizInfo].self, from: data)
+                // fetch JSON data
+                self.quizInfo = try JSONDecoder().decode([QuizInfo].self, from: data)
+                // store JSON data in vars
+                var temp: Int = 0
+                while temp < (self.quizInfo?.count)! {
+                    self.subjectList.append(self.quizInfo![temp].title)
+                    self.subjectDescription.append(self.quizInfo![temp].desc!)
+                    temp += 1
+                }
+        
                 
             } catch let jsonError{
                 print(jsonError)
+            }
+            DispatchQueue.main.async{
+                self.subjectTableView.reloadData()
             }
         }.resume()
         
         super.viewDidLoad()
         
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjectList.count
@@ -91,6 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let target = segue.destination as! QuestionViewController
         
         target.cellPressed = myIndex
+        target.quizInfo = quizInfo
     }
 
     
