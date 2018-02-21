@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E371E53203D4D1000AC445E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E371E52203D4D1000AC445E /* Reachability.swift */; };
+		5E371E55203D58E100AC445E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E371E54203D58E100AC445E /* Settings.bundle */; };
 		5E41176A203116E700365453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E411769203116E700365453 /* AppDelegate.swift */; };
 		5E41176C203116E700365453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E41176B203116E700365453 /* ViewController.swift */; };
 		5E41176F203116E700365453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E41176D203116E700365453 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E371E52203D4D1000AC445E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		5E371E54203D58E100AC445E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5E411766203116E700365453 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E411769203116E700365453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E41176B203116E700365453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			children = (
 				5E411769203116E700365453 /* AppDelegate.swift */,
 				5E41176B203116E700365453 /* ViewController.swift */,
+				5E371E54203D58E100AC445E /* Settings.bundle */,
 				5E41176D203116E700365453 /* Main.storyboard */,
 				5EF548982037FDF5002A313B /* FinishedViewController.swift */,
 				5EF2ED20203150C3002ACF7F /* Images.xcassets */,
@@ -75,6 +80,7 @@
 				5EF2ED2420315BD3002ACF7F /* CustomTableViewCell.swift */,
 				5EF5489420378A3C002A313B /* QuestionViewController.swift */,
 				5EF548962037EF7F002A313B /* AnswerViewController.swift */,
+				5E371E52203D4D1000AC445E /* Reachability.swift */,
 			);
 			path = iQuiz;
 			sourceTree = "<group>";
@@ -140,6 +146,7 @@
 			files = (
 				5E411774203116E700365453 /* LaunchScreen.storyboard in Resources */,
 				5EF2ED21203150C3002ACF7F /* Images.xcassets in Resources */,
+				5E371E55203D58E100AC445E /* Settings.bundle in Resources */,
 				5E411771203116E700365453 /* Assets.xcassets in Resources */,
 				5E41176F203116E700365453 /* Main.storyboard in Resources */,
 			);
@@ -152,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E371E53203D4D1000AC445E /* Reachability.swift in Sources */,
 				5EF548992037FDF5002A313B /* FinishedViewController.swift in Sources */,
 				5E41176C203116E700365453 /* ViewController.swift in Sources */,
 				5EF2ED2520315BD3002ACF7F /* CustomTableViewCell.swift in Sources */,
